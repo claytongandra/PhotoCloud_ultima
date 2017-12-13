@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-language" content="pt-BR">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>[PhotoCloud]</title>
+        <link rel="shortcut icon" type="image/x-icon" href="~/Content/pho_images/phoimg_icones/favicon.ico" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryplugins")
+        @Scripts.Render("~/bundles/javascript")
+    </head>
+    <body>
+        <div id="container">
+            <div id="top"> 
+                <div id="topbarra">
+                    <div id="toplogo"> 
+                       <a id="linkHome" href="Home" title="Início"><img src="~/Content/pho_images/phoimg_logo/photocloud_logosmall_white.png" alt="[PhotoCloud]" /></a>
+                    </div>
+                    <div id="topbarra_menu">
+                        <ul id="menuhorizontal">
+                            
+                        </ul>
+                    </div>
+                    <div id="topusuario">
+                         <ul id="menuhorizontal_conta">
+                            <li>
+                                <span></span><a href='#'>@Model.loginUsuario</a>
+                                <ul class="sub_menu_conta">
+                                    <li></i>@Html.ActionLink("Alterar Informações de Conta", "Editar", "Conta")</li>
+                                    <li></i>@Html.ActionLink("Sair", "Logout", "Acesso")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                 </div>
+            </div><!-- Fim #top -->
+            <div id="toppage"></div><!-- Fim #toppage -->
+            <div id="page"> 
+                <div id="sidebar_left"></div><!-- Fim #sidebar_left -->
+                <div id="container_contents">
+                    @RenderBody()
+                </div><!-- Fim #container_contents -->
+            <div style="clear: both;">&nbsp;</div>
+		    </div><!-- Fim #page -->
+	        <div id="footer">
+		        <p>Copyright &copy; 2013 - Clayton Gandraº</p>
+	        </div><!-- Fim #footer -->
+        </div><!-- Fim #container -->
+    </body>
+</html>

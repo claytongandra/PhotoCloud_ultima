@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="photocloudModelStoreContainer" CdmEntityContainer="photocloudEntities">
+    <EntitySetMapping Name="pho_usuario_acesso">
+      <EntityTypeMapping TypeName="photocloudModel.pho_usuario_acesso">
+        <MappingFragment StoreEntitySet="pho_usuario_acesso">
+          <ScalarProperty Name="usa_id" ColumnName="usa_id" />
+          <ScalarProperty Name="usa_fk_usuario" ColumnName="usa_fk_usuario" />
+          <ScalarProperty Name="usa_login" ColumnName="usa_login" />
+          <ScalarProperty Name="usa_senha" ColumnName="usa_senha" />
+          <ScalarProperty Name="usa_email" ColumnName="usa_email" />
+          <ScalarProperty Name="usa_dataexpiracao" ColumnName="usa_dataexpiracao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pho_usuarios">
+      <EntityTypeMapping TypeName="photocloudModel.pho_usuarios">
+        <MappingFragment StoreEntitySet="pho_usuarios">
+          <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+          <ScalarProperty Name="usu_nome" ColumnName="usu_nome" />
+          <ScalarProperty Name="usu_sobrenome" ColumnName="usu_sobrenome" />
+          <ScalarProperty Name="usu_nivel" ColumnName="usu_nivel" />
+          <ScalarProperty Name="usu_diretoriobase" ColumnName="usu_diretoriobase" />
+          <ScalarProperty Name="usu_status" ColumnName="usu_status" />
+          <ScalarProperty Name="usu_datacadastro" ColumnName="usu_datacadastro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

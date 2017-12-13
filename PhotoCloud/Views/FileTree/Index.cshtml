@@ -1,0 +1,39 @@
+﻿@*@{Uri uri = Request.Url;}*@
+@*uri*@
+
+@*--------------Index - FileTreeController------------------*@
+
+<ul class="jqueryFileTree" style="display: none;">
+    @*Lista os diretórios *@
+    @try{
+      
+            foreach (PhotoCloud.Models.DiretorioModel dir in Model.dirModelList)
+            {
+                <li class="directory collapsed">
+
+                    <a href="#" url="@dir.Dir.Replace(@"//",@"/")">@dir.DirName</a> 
+                   @* . . . . . . @dir.DirAccessed*@
+          
+                </li>
+              
+                
+            }
+            @*Lista os Arquivos *@
+
+        foreach (PhotoCloud.Models.FileModel file in Model.fileModelList)
+            {
+       
+                <li class="file ext_@file.FileExtension"><a href="@file.FileDirectoryName.Replace(@"//",@"/")" url="@file.FileDirectoryName.Replace(@"//",@"/")" rel="prettyPhoto[gallerytree_@file.FileDirectory]">@file.FileName</a>
+                    @*@file.FileExtension*@
+                    @*. . . . . . @file.FileSizeText*@
+                    @*. . . . . . @file.FileAccessed*@
+                </li>
+            }
+         }
+        catch (Exception e)
+        {
+              @ViewBag.MessageError
+        }
+        finally { }
+
+</ul>

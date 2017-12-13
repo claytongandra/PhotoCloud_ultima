@@ -1,0 +1,117 @@
+﻿@model PhotoCloud.Models.AcessoModel
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div id="BoxGeral">
+        <div id="BoxTitulo">
+            <h2>
+            Acesse sua conta
+            </h2>
+        </div>
+        <div id="BoxFormsGeral">
+            <div id="BoxFormLogin">
+                <fieldset>
+                    <legend>Informe seus dados</legend>
+                    <form method="post" action="/Acesso/Login" id="frmLogin">
+
+                        <table style="margin-top:10px;">
+                            <tr>
+                                <td colspan="2">
+                                    @Html.ValidationSummary(true)
+                                    @* @Html.ValidationMessage("CustomError")*@
+                                </td>
+                            </tr>                          
+                            <tr>
+                                 <td colspan="2">
+                                    @Html.ValidationMessageFor(model => model.usuario)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Usuário ou E-mail:
+                                
+                                </td>
+                                <td>
+                                  @*  <input type="text" name="txtUsuario" id="txtUsuario" maxlength="200" class="" />*@
+                                    @Html.EditorFor(model => model.usuario)
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                 <td colspan="2">
+                                     @Html.ValidationMessageFor(model => model.senha)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Senha:
+                          
+                                </td>
+                                <td>
+                                   @* <input type="password" name="txtSenha" id="txtSenha" maxlength="10" class="" />*@
+                                    @Html.PasswordFor(model => model.senha)
+                                   
+                                </td>
+                            </tr>
+                            
+                             <tr>
+                            <td colspan="2" style="height:10px;">
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Html.CheckBoxFor(model => model.lembrarUsuario)
+                               @* <input type="checkbox" name="KMSI" id="ckblembraracesso" value="1" />*@
+                                <label for="lembrarUsuario" id="LbllembrarUsuario">Lembrar meu usuário neste dispositivo.</label>
+                            </td>
+                        </tr>
+                        <tr>
+                             <td></td>
+                            <td>
+                                @Html.CheckBoxFor(model => model.manterConectado)
+                                <label for="manterConectado" id="LblmanterConectado">Mantenha-me conectado.</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height:20px;">
+                               
+                            </td>
+                        </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" name="btnEntrar" id="btnEntrar" value="Entrar" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="@Href("~/Usuarios/Relembrar")" target="_self" class="LinkGeral">Esqueceu sua senha?</a>
+
+                                </td>
+
+                            </tr>
+                        </table>
+                    </form>
+                </fieldset>
+             </div>
+             <div id="BoxCadastro">
+                <fieldset>
+                    <legend>Cadastre-se</legend>
+                    <span style="margin-top:15px;">
+                        Ainda não se cadastrou em nosso portal? Cadastre-se agora mesmo!<br /><br />
+                        <input type="button" value="Cadastrar agora!" id="btnCadastrar" />
+                    </span>
+                </fieldset>
+            </div>
+        </div>
+        <div id="BoxOutrasInformacoes">
+            <h6 class="css0046">O que significa "Lembrar meu usuário neste dispositivo"?</h6>
+            <p style="font-size:7pt;">Se marcar a opção "Lembrar meu usuário neste dispositivo", na proxima vez que você for efetuar o login no sistema PhotoCloud, o campo de usuário já será preenchido automaticamente com seu nome de usuário. Se estiver usando um computador público, recomendamos desmarcar essa opção.</p>
+            <br />
+            <h6 class="css0046">O que significa "Mantenha-me conectado"?</h6>
+            <p style="font-size:7pt;">Se marcar a opção "Mantenha-me conectado", poderá permanecer no PhotoCloud, neste computador, por até 30 dias ou até que você saia. A opção "Mantenha-me conectado" aplica-se apenas a esse computador. <br />Se estiver usando um computador público, recomendamos desmarcar essa opção.</p>
+        </div>
+    </div>
+
+

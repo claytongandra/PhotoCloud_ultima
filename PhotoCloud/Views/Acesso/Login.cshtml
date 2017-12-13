@@ -1,0 +1,82 @@
+﻿@model PhotoCloud.Models.AcessoModel
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div id="BoxGeral">
+    <div id="BoxTitulo">
+        <h2>Acesse sua conta</h2>
+    </div>
+    <div id="BoxFormsGeral">
+        <div id="BoxFormLogin">
+            <fieldset>
+                <legend>Informe seus dados</legend>
+                <form method="post" action="/Acesso/Login" id="frmLogin">
+                    <div style="border:1px none #f00;float:right; width:100%;height:18px;">
+                        @Html.ValidationSummary(true)
+                    </div>
+                    <div style="border:1px none #f00;float:right; width:303px;height:18px;">
+                        @Html.ValidationMessageFor(model => model.usuario)
+                    </div>
+                    <label for="usuario" id="Lblusuario">Usuário ou E-mail:</label>
+                    @Html.EditorFor(model => model.usuario)
+                    @Html.ValidationMessageFor(model => model.senha)
+                    <div id="divEsqueciSenha">
+                        @Html.ActionLink("Esqueci minha senha", "Relembrar", "Acesso",null, new {@class="LinkGeral"})
+                    </div>
+                    <label for="senha" id="Lblsenha">Senha:</label>
+                    @Html.PasswordFor(model => model.senha)
+                    <div style="border:1px none #f00;">
+                        @Html.CheckBoxFor(model => model.lembrarUsuario) 
+                        <label for="lembrarUsuario" id="LbllembrarUsuario">Lembrar usuário neste dispositivo.</label>
+                        @Html.CheckBoxFor(model => model.manterConectado)
+                        <label for="manterConectado" id="LblmanterConectado">Mantenha-me conectado.</label>
+                    </div>
+                    <div class="divsubmit">
+                        <input type="submit" name="btnEntrar" id="btnEntrar" value="Entrar" />
+                    </div>
+                </form>
+
+                <div id="login-openid">
+                    <h5>Ou utilize outro serviço para fazer o login:</h5>
+                   @* @Html.ActionLink("Google", "ExternalLogin", "Acesso",false, new {@id = "google"})*@
+                   <a id="google" href="/Acesso/ExternalLogin?provider=google">Google</a>
+                   <a id="facebook" href="/Acesso/ExternalLogin?provider=facebook">Facebook</a>
+                   <a id="yahoo" href="/Acesso/ExternalLogin?provider=yahoo">Yahoo</a>
+                   <a id="twitter" href="/Acesso/ExternalLogin?provider=twitter">Twitter</a>
+                 @*  <a id="linkedin" href="/Acesso/ExternalLogin?provider=linkedin">Linkedin</a>
+                    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })*@
+                </div>
+            </fieldset>
+        </div>
+        <div id="BoxCadastro">
+             <fieldset>
+                    <legend>Cadastre-se</legend>
+                    <div style="margin-top:15px;">
+                        <h4>Ainda não possui uma conta?</h4>
+                        <br />
+                        <p>Organize e compartilhe suas fotos na nuvem com esta ferramenta online. PhotoCloud permite acessar suas fotos em qualquer lugar através da internet.</p>
+                         <br />
+                         <br />
+                        <ul>
+                            <li>- Totalmente Gratuito e online;</li>
+                            <li>- Seguro: Dados criptografados;</li>
+                            <li>- Interface simples e amigável.</li>
+                        </ul>
+                        <br />
+                        <div class="divsubmit">
+                            <form method="post" action="/Conta/Cadastrar" id="frmCadastrar">
+                             <input type="submit" value="Cadastrar agora" id="btnCadastrar" />
+                            </form>
+                        </div>
+                    </div>
+                </fieldset>
+        </div>
+         <div id="BoxOutrasInformacoes">
+            <h6 class="css0046">O que significa "Lembrar meu usuário neste dispositivo"?</h6>
+            <p style="font-size:7pt;">Se marcar a opção "Lembrar meu usuário neste dispositivo", na proxima vez que você for efetuar o login no sistema PhotoCloud, o campo de usuário já será preenchido automaticamente com seu nome de usuário. Se estiver usando um computador público, recomendamos desmarcar essa opção.</p>
+            <br />
+            <h6 class="css0046">O que significa "Mantenha-me conectado"?</h6>
+            <p style="font-size:7pt;">Se marcar a opção "Mantenha-me conectado", poderá permanecer no PhotoCloud, neste computador, por até 30 dias ou até que você saia. A opção "Mantenha-me conectado" aplica-se apenas a esse computador. <br />Se estiver usando um computador público, recomendamos desmarcar essa opção.</p>
+        </div>
+    </div>
+</div>

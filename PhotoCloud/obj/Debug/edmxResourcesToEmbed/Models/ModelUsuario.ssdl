@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="photocloudModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="photocloudModelStoreContainer">
+    <EntitySet Name="pho_usuario_acesso" EntityType="photocloudModel.Store.pho_usuario_acesso" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pho_usuarios" EntityType="photocloudModel.Store.pho_usuarios" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="usu_usa_id" Association="photocloudModel.Store.usu_usa_id">
+      <End Role="pho_usuarios" EntitySet="pho_usuarios" />
+      <End Role="pho_usuario_acesso" EntitySet="pho_usuario_acesso" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="pho_usuario_acesso">
+    <Key>
+      <PropertyRef Name="usa_id" />
+    </Key>
+    <Property Name="usa_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="usa_fk_usuario" Type="int" Nullable="false" />
+    <Property Name="usa_login" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="usa_senha" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="usa_email" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="usa_dataexpiracao" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pho_usuarios">
+    <Key>
+      <PropertyRef Name="usu_id" />
+    </Key>
+    <Property Name="usu_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="usu_nome" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="usu_sobrenome" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="usu_nivel" Type="int" Nullable="false" />
+    <Property Name="usu_diretoriobase" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="usu_status" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="usu_datacadastro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="usu_usa_id">
+    <End Role="pho_usuarios" Type="photocloudModel.Store.pho_usuarios" Multiplicity="1" />
+    <End Role="pho_usuario_acesso" Type="photocloudModel.Store.pho_usuario_acesso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pho_usuarios">
+        <PropertyRef Name="usu_id" />
+      </Principal>
+      <Dependent Role="pho_usuario_acesso">
+        <PropertyRef Name="usa_fk_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
